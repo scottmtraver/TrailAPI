@@ -1,0 +1,11 @@
+{
+  "name": "trailapi",
+  "version": "1.0.0",
+  "description": "Run on trails resource api",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Scott Traver",
+  "license": "ISC"
+}
