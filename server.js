@@ -16,18 +16,15 @@ jsonApi.setConfig({
   }
 });
 
-//sample data
-var users = {
-  'scott': {
-    username: 'scott',
-    password: 'password'
-  }
-};
-
 var appSecret = config.get('app.secret');
 var connection = config.get('database.config.connectionString');
 
 var sequelize = new Sequelize(connection);
+
+var User = sequelize.define('user', {
+  username: Sequelize.STRING,
+  password: Sequelize.TEXT
+})
 
 
 var app = jsonApi.getExpressServer();//get express instance
@@ -35,37 +32,34 @@ var app = jsonApi.getExpressServer();//get express instance
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
 //auth token route
-// route to authenticate a user (POST http://localhost:8080/api/authenticate)
 app.post('/authenticate', function(req, res) {
 
   // find the user
-  var user = users[req.body.username];
+  User.findOne({ where: { username: req.body.username } }).then(function (user) {
+    if (!user) {
+      res.json({ success: false, message: 'Authentication failed. User not found.' });
+    } else if (user) {
 
-  if (!user) {
-    res.json({ success: false, message: 'Authentication failed. User not found.' });
-  } else if (user) {
+      // check if password matches
+      if (user.get('password') != req.body.password) {
+        res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+      } else {
 
-    // check if password matches
-    if (user.password != req.body.password) {
-      res.json({ success: false, message: 'Authentication failed. Wrong password.' });
-    } else {
+        // if user is found and password is right
+        var token = jwt.sign(user.dataValues, appSecret, {
+          expiresIn: 1440
+        });
 
-      // if user is found and password is right
-      // create a token
-      var token = jwt.sign(user, app.get(appSecret), {
-        expiresIn: 1440
-      });
-
-      // return the information including token as JSON
-      res.json({
-        success: true,
-        message: 'Enjoy your token!',
-        token: token
-      });
-    }   
-  }
+        // return the information including token as JSON
+        res.json({
+          success: true,
+          message: 'Enjoy your token!',
+          token: token
+        });
+      }   
+    }
+  });
 });
 
 // route middleware to verify a token
@@ -78,7 +72,7 @@ app.use(function(req, res, next) {
   if (token) {
 
     // verifies secret and checks exp
-    jwt.verify(token, app.get('superSecret'), function(err, decoded) {      
+    jwt.verify(token, appSecret, function(err, decoded) {      
       if (err) {
         return res.json({ success: false, message: 'Failed to authenticate token.' });    
       } else {
