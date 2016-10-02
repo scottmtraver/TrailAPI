@@ -14,6 +14,7 @@
     "config": "^1.21.0",
     "fs": "0.0.2",
     "jsonapi-server": "^2.1.0",
+    "jsonapi-store-relationaldb": "^1.2.8",
     "jsonwebtoken": "^7.1.9",
     "path": "^0.12.7",
     "pg": "^6.1.0",
