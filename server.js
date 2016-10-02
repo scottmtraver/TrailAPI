@@ -94,19 +94,6 @@ app.use(function(req, res, next) {
   }
 });
 
-
-//authentication
-jsonApi.authenticate(function(request, callback) {
-  // If a "blockMe" header is provided, block access.
-  if (request.headers.blockme) return callback("Fail");
-
-  // If a "blockMe" cookie is provided, block access.
-  if (request.cookies.blockMe) return callback("Fail");
-
-  return callback();
-});
-
-
 // Load all the resources
 fs.readdirSync(path.join(__dirname, "/resources")).filter(function(filename) {
   return /^[a-z].*\.js$/.test(filename);
@@ -126,6 +113,5 @@ jsonApi.onUncaughtException(function(request, error) {
 
 
 jsonApi.start();
-
 
 //close squelize
