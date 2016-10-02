@@ -11,9 +11,13 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "config": "^1.21.0",
     "fs": "0.0.2",
     "jsonapi-server": "^2.1.0",
     "jsonwebtoken": "^7.1.9",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "pg": "^6.1.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.24.3"
   }
 }

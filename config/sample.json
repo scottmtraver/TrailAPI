@@ -1,0 +1,10 @@
+{
+  "database": {
+    "config": {
+      "connectionString": "Connection String"
+    }
+  },
+  "app": {
+    "secret": "App Secret"
+  }
+}

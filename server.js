@@ -3,6 +3,8 @@ var fs = require("fs");
 var path = require("path");
 var jwt = require('jsonwebtoken');
 var bodyParser = require('body-parser');
+var Sequelize = require('sequelize');
+var config = require('config');
 
 jsonApi.setConfig({
   protocol: "http",
@@ -22,9 +24,13 @@ var users = {
   }
 };
 
+var appSecret = config.get('app.secret');
+var connection = config.get('database.config.connectionString');
+
+var sequelize = new Sequelize(connection);
+
 
 var app = jsonApi.getExpressServer();//get express instance
-app.set('superSecret', 'shhhhhhh from config');//set secret from config
 //configure body parsers
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -48,7 +54,7 @@ app.post('/authenticate', function(req, res) {
 
       // if user is found and password is right
       // create a token
-      var token = jwt.sign(user, app.get('superSecret'), {
+      var token = jwt.sign(user, app.get(appSecret), {
         expiresIn: 1440
       });
 
@@ -126,3 +132,6 @@ jsonApi.onUncaughtException(function(request, error) {
 
 
 jsonApi.start();
+
+
+//close squelize
