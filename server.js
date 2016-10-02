@@ -17,7 +17,7 @@ jsonApi.setConfig({
 });
 
 var appSecret = config.get('app.secret');
-var connection = config.get('database.config.connectionString');
+var connection = config.get('database.connectionString');
 
 var sequelize = new Sequelize(connection);
 

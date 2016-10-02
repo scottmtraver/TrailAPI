@@ -1,10 +1,13 @@
 {
   "database": {
-    "config": {
-      "connectionString": "Connection String"
-    }
+    "connectionString": "connection string",
+    "host": "host",
+    "port": "port",
+    "name": "database name",
+    "user": "user",
+    "password": "password"
   },
   "app": {
-    "secret": "App Secret"
+    "secret": "secret"
   }
 }
