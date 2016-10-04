@@ -16,10 +16,12 @@ jsonApi.define({
     resultsUrl: jsonApi.Joi.string().uri(),
     courseUrl: jsonApi.Joi.string().uri(),
     courseText: jsonApi.Joi.string(),
+
+    venue: jsonApi.Joi.one('venues')
   },
   examples: [
     {
-      id: "97e7-401c-98c8-0bd5ec922d93",
+      id: "race-123",
       type: "races",
       name: "First Race of the Season!",
       description: "This is the first race description",
@@ -31,7 +33,9 @@ jsonApi.define({
       imageUrl: "http://www.example.com/image",
       resultsUrl: "http://www.example.com/image",
       courseUrl: "http://www.example.com/image",
-      courseText: "Up and down those hills"
+      courseText: "Up and down those hills",
+
+      venue: { type: 'venues', id: 'venue-123' }
     }
   ]
 });

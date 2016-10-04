@@ -116,5 +116,7 @@ jsonApi.start();
 //test create tables
 var sponsorHandler = require("./handlers/sponsorHandler.js");
 sponsorHandler.populate();
+var venueHandler = require("./handlers/venueHandler.js");
+venueHandler.populate();
 var raceHandler = require("./handlers/raceHandler.js");
 raceHandler.populate();
