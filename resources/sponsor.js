@@ -7,7 +7,7 @@ jsonApi.define({
   attributes: {
     name: jsonApi.Joi.string(),
     text: jsonApi.Joi.string(),
-    linkUrl: jsonApi.Joi.string().uri()
+    linkUrl: jsonApi.Joi.string().uri(),
     imageUrl: jsonApi.Joi.string().uri()
   },
     examples: [
@@ -20,7 +20,7 @@ jsonApi.define({
       imageUrl: "http://www.example.com/foobar",
     },
     {
-      id: "aab14844-97e7-401c-98c8-0bd5ec922d93",
+      id: "aab14844-97e7-401c-98c8-0bd5ec922d94",
       type: "sponsors",
       name: "Another Code",
       text: "sample text",
@@ -28,7 +28,7 @@ jsonApi.define({
       imageUrl: "http://www.example.com/foobar",
     },
     {
-      id: "aab14844-97e7-401c-98c8-0bd5ec922d93",
+      id: "aab14844-97e7-401c-98c8-0bd5ec922d95",
       type: "sponsors",
       name: "Final Code",
       text: "sample text",

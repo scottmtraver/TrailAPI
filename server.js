@@ -101,7 +101,6 @@ fs.readdirSync(path.join(__dirname, "/resources")).filter(function(filename) {
   return path.join(__dirname, "/resources/", filename);
 }).forEach(require);
 
-
 jsonApi.onUncaughtException(function(request, error) {
   var errorDetails = error.stack.split("\n");
   console.error(JSON.stringify({
@@ -114,4 +113,8 @@ jsonApi.onUncaughtException(function(request, error) {
 
 jsonApi.start();
 
-//close squelize
+//test create tables
+var sponsorHandler = require("./handlers/sponsorHandler.js");
+sponsorHandler.populate();
+var raceHandler = require("./handlers/raceHandler.js");
+raceHandler.populate();
