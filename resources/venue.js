@@ -7,9 +7,9 @@ jsonApi.define({
   attributes: {
     name: jsonApi.Joi.string(),
     description: jsonApi.Joi.string(),
-    directionsUrl: jsonApi.Joi.string().uri(),
-    linkUrl: jsonApi.Joi.string().uri(),
-    imageUrl: jsonApi.Joi.string().uri(),
+    directions_url: jsonApi.Joi.string().uri(),
+    link_url: jsonApi.Joi.string().uri(),
+    image_url: jsonApi.Joi.string().uri(),
 
     races: jsonApi.Joi.belongsToMany({
       resource: 'races',
@@ -22,27 +22,27 @@ jsonApi.define({
       type: "venues",
       name: "Big Venue",
       description: "sample text",
-      directionsUrl: "http://www.example.com/foobar",
-      linkUrl: "http://www.example.com/foobar",
-      imageUrl: "http://www.example.com/foobar"
+      directions_url: "http://www.example.com/foobar",
+      link_url: "http://www.example.com/foobar",
+      image_url: "http://www.example.com/foobar"
     },
     {
       id: "venue-456",
       type: "venues",
       name: "Medium Venue",
       description: "sample text",
-      directionsUrl: "http://www.example.com/foobar",
-      linkUrl: "http://www.example.com/foobar",
-      imageUrl: "http://www.example.com/foobar",
+      directions_url: "http://www.example.com/foobar",
+      link_url: "http://www.example.com/foobar",
+      image_url: "http://www.example.com/foobar",
     },
     {
       id: "venue-789",
       type: "venues",
       name: "Tiny Track",
       description: "sample text",
-      directionsUrl: "http://www.example.com/foobar",
-      linkUrl: "http://www.example.com/foobar",
-      imageUrl: "http://www.example.com/foobar",
+      directions_url: "http://www.example.com/foobar",
+      link_url: "http://www.example.com/foobar",
+      image_url: "http://www.example.com/foobar",
     }
   ]
 });

@@ -7,8 +7,8 @@ jsonApi.define({
   attributes: {
     name: jsonApi.Joi.string(),
     text: jsonApi.Joi.string(),
-    linkUrl: jsonApi.Joi.string().uri(),
-    imageUrl: jsonApi.Joi.string().uri()
+    link_url: jsonApi.Joi.string().uri(),
+    image_url: jsonApi.Joi.string().uri()
   },
     examples: [
     {
@@ -16,24 +16,24 @@ jsonApi.define({
       type: "sponsors",
       name: "North Face",
       text: "sample text",
-      linkUrl: "http://www.example.com/foobar",
-      imageUrl: "http://www.example.com/foobar",
+      link_url: "http://www.example.com/foobar",
+      image_url: "http://www.example.com/foobar",
     },
     {
       id: "sponsor-456",
       type: "sponsors",
       name: "5 Ten Shoes",
       text: "sample text",
-      linkUrl: "http://www.example.com/foobar",
-      imageUrl: "http://www.example.com/foobar",
+      link_url: "http://www.example.com/foobar",
+      image_url: "http://www.example.com/foobar",
     },
     {
       id: "sponsor-789",
       type: "sponsors",
       name: "World Marathon Majors",
       text: "sample text",
-      linkUrl: "http://www.example.com/foobar",
-      imageUrl: "http://www.example.com/foobar",
+      link_url: "http://www.example.com/foobar",
+      image_url: "http://www.example.com/foobar",
     }
   ]
 });

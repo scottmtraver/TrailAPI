@@ -8,34 +8,34 @@ jsonApi.define({
     name: jsonApi.Joi.string(),
     description: jsonApi.Joi.string(),
     date: jsonApi.Joi.string(),
-    registrationTime: jsonApi.Joi.string(),
-    startTime: jsonApi.Joi.string(),
+    registration_time: jsonApi.Joi.string(),
+    start_time: jsonApi.Joi.string(),
     cost: jsonApi.Joi.string(),
     distance: jsonApi.Joi.string(),
-    imageUrl: jsonApi.Joi.string().uri(),
-    resultsUrl: jsonApi.Joi.string().uri(),
-    courseUrl: jsonApi.Joi.string().uri(),
-    courseText: jsonApi.Joi.string(),
+    image_url: jsonApi.Joi.string().uri(),
+    results_url: jsonApi.Joi.string().uri(),
+    course_url: jsonApi.Joi.string().uri(),
+    course_text: jsonApi.Joi.string(),
 
     venue: jsonApi.Joi.one('venues')
   },
   examples: [
     {
-      id: "race-123",
+      id: "race_123",
       type: "races",
       name: "First Race of the Season!",
       description: "This is the first race description",
-      date: "2016-01-03",
-      registrationTime: "6:45",
-      startTime: "7:30",
+      date: "2016_01_03",
+      registration_time: "6:45",
+      start_time: "7:30",
       cost: "$20",
       distance: "Short 5k and Long 10K courses",
-      imageUrl: "http://www.example.com/image",
-      resultsUrl: "http://www.example.com/image",
-      courseUrl: "http://www.example.com/image",
-      courseText: "Up and down those hills",
+      image_url: "http://www.example.com/image",
+      results_url: "http://www.example.com/image",
+      course_url: "http://www.example.com/image",
+      course_text: "Up and down those hills",
 
-      venue: { type: 'venues', id: 'venue-123' }
+      venue: { type: 'venues', id: 'venue_123' }
     }
   ]
 });
