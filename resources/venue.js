@@ -24,7 +24,7 @@ jsonApi.define({
       description: "sample text",
       directions_url: "http://www.example.com/foobar",
       link_url: "http://www.example.com/foobar",
-      image_url: "http://www.example.com/foobar"
+      image_url: "https://placekitten.com/400/400"
     },
     {
       id: "venue-456",
@@ -33,7 +33,7 @@ jsonApi.define({
       description: "sample text",
       directions_url: "http://www.example.com/foobar",
       link_url: "http://www.example.com/foobar",
-      image_url: "http://www.example.com/foobar",
+      image_url: "https://placekitten.com/400/400",
     },
     {
       id: "venue-789",
@@ -42,7 +42,7 @@ jsonApi.define({
       description: "sample text",
       directions_url: "http://www.example.com/foobar",
       link_url: "http://www.example.com/foobar",
-      image_url: "http://www.example.com/foobar",
+      image_url: "https://placekitten.com/400/400",
     }
   ]
 });

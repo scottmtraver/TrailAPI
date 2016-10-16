@@ -17,7 +17,7 @@ jsonApi.define({
       name: "North Face",
       text: "sample text",
       link_url: "http://www.example.com/foobar",
-      image_url: "http://www.example.com/foobar",
+      image_url: "https://placekitten.com/400/400",
     },
     {
       id: "sponsor-456",
@@ -25,7 +25,7 @@ jsonApi.define({
       name: "5 Ten Shoes",
       text: "sample text",
       link_url: "http://www.example.com/foobar",
-      image_url: "http://www.example.com/foobar",
+      image_url: "https://placekitten.com/400/400",
     },
     {
       id: "sponsor-789",
@@ -33,7 +33,7 @@ jsonApi.define({
       name: "World Marathon Majors",
       text: "sample text",
       link_url: "http://www.example.com/foobar",
-      image_url: "http://www.example.com/foobar",
+      image_url: "https://placekitten.com/400/400",
     }
   ]
 });
