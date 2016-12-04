@@ -6,7 +6,7 @@ jsonApi.define({
   handlers: sponsorHandler,
   attributes: {
     name: jsonApi.Joi.string(),
-    text: jsonApi.Joi.string(),
+    description: jsonApi.Joi.string(),
     link_url: jsonApi.Joi.string().uri(),
     image_url: jsonApi.Joi.string().uri()
   },
@@ -15,7 +15,7 @@ jsonApi.define({
       id: "sponsor-123",
       type: "sponsors",
       name: "North Face",
-      text: "sample text",
+      description: "sample description",
       link_url: "http://www.example.com/foobar",
       image_url: "https://placekitten.com/400/400",
     },
@@ -23,7 +23,7 @@ jsonApi.define({
       id: "sponsor-456",
       type: "sponsors",
       name: "5 Ten Shoes",
-      text: "sample text",
+      description: "sample description",
       link_url: "http://www.example.com/foobar",
       image_url: "https://placekitten.com/400/400",
     },
@@ -31,7 +31,7 @@ jsonApi.define({
       id: "sponsor-789",
       type: "sponsors",
       name: "World Marathon Majors",
-      text: "sample text",
+      description: "sample description",
       link_url: "http://www.example.com/foobar",
       image_url: "https://placekitten.com/400/400",
     }

@@ -15,7 +15,7 @@ jsonApi.define({
     image_url: jsonApi.Joi.string().uri(),
     results_url: jsonApi.Joi.string().uri(),
     course_url: jsonApi.Joi.string().uri(),
-    course_text: jsonApi.Joi.string(),
+    course_description: jsonApi.Joi.string(),
 
     venue: jsonApi.Joi.one('venues')
   },
@@ -33,7 +33,7 @@ jsonApi.define({
       image_url: "https://placekitten.com/400/400",
       results_url: "http://www.example.com/image",
       course_url: "http://www.example.com/image",
-      course_text: "Up and down those hills",
+      course_description: "Up and down those hills",
 
       venue: { type: 'venues', id: 'venue_123' }
     }
