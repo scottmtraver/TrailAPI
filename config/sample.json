@@ -9,5 +9,9 @@
   },
   "app": {
     "secret": "secret"
+  },
+  "cloudinary": {
+    "apiKey": 1234567890,
+    "secret": "cloudinary-secret"
   }
 }

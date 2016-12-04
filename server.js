@@ -5,6 +5,7 @@ var jwt = require('jsonwebtoken');
 var bodyParser = require('body-parser');
 var Sequelize = require('sequelize');
 var config = require('config');
+var sha1 = require('sha1');
 
 jsonApi.setConfig({
   protocol: "http",
@@ -33,6 +34,25 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //auth token route
+app.post('/token', function(req, res) {
+  if (req.body.username == 'login' && req.body.password == 'ok') {
+    res.send({ access_token: "some bs" });
+  } else {
+    res.status(400).send({ error: "invalid_grant" });
+  }
+});
+//authentication middleware
+app.use(function(req, res, next) {
+  if (req.headers['authorization'] !== "Bearer some bs") {
+    return res.status(401).send({ 
+        success: false, 
+        message: 'No token provided.' 
+    });
+  }
+  next();
+});
+
+/*
 app.post('/authenticate', function(req, res) {
 
   // find the user
@@ -61,38 +81,22 @@ app.post('/authenticate', function(req, res) {
     }
   });
 });
+*/
 
-// route middleware to verify a token
-app.use(function(req, res, next) {
+//cloudinary!
+app.get('/sign_upload', function(req, res) {
+  //needs authentication
+  var timestamp = req.query.timestamp;
+  var sign = sha1('timestamp=' + timestamp + config.get('cloudinary.secret'));
 
-  // check header or url parameters or post parameters for token
-  var token = req.body.token || req.query.token || req.headers['x-access-token'];
-
-  // decode token
-  if (token) {
-
-    // verifies secret and checks exp
-    jwt.verify(token, appSecret, function(err, decoded) {      
-      if (err) {
-        return res.json({ success: false, message: 'Failed to authenticate token.' });    
-      } else {
-        // if everything is good, save to request for use in other routes
-        req.decoded = decoded;    
-        next();
-      }
-    });
-
-  } else {
-
-    // if there is no token
-    // return an error
-    return res.status(403).send({ 
-        success: false, 
-        message: 'No token provided.' 
-    });
-    
-  }
+  //TODO MOVE TO CONFIG!!! DO NOT CHECK IN!!!!
+  res.json( {
+    timestamp: timestamp,
+    signature: sign,
+    api_key: config.get('cloudinary.apiKey');
+  });
 });
+
 
 // Load all the resources
 fs.readdirSync(path.join(__dirname, "/resources")).filter(function(filename) {
