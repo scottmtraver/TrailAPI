@@ -21,7 +21,7 @@ jsonApi.define({
   },
   examples: [
     {
-      id: "race_123",
+      id: "1",
       type: "races",
       name: "First Race of the Season!",
       description: "This is the first race description",
@@ -30,12 +30,12 @@ jsonApi.define({
       start_time: "7:30",
       cost: "$20",
       distance: "Short 5k and Long 10K courses",
-      image_url: "https://placekitten.com/400/400",
+      image_url: "http://placehold.it/350x150",
       results_url: "http://www.example.com/image",
       course_url: "http://www.example.com/image",
       course_description: "Up and down those hills",
 
-      venue: { type: 'venues', id: 'venue_123' }
+      venue: { type: 'venues', id: '1' }
     }
   ]
 });

@@ -12,28 +12,28 @@ jsonApi.define({
   },
     examples: [
     {
-      id: "sponsor-123",
+      id: "1",
       type: "sponsors",
       name: "North Face",
       description: "sample description",
       link_url: "http://www.example.com/foobar",
-      image_url: "https://placekitten.com/400/400",
+      image_url: "http://placehold.it/350x150",
     },
     {
-      id: "sponsor-456",
+      id: "2",
       type: "sponsors",
       name: "5 Ten Shoes",
       description: "sample description",
       link_url: "http://www.example.com/foobar",
-      image_url: "https://placekitten.com/400/400",
+      image_url: "http://placehold.it/350x150",
     },
     {
-      id: "sponsor-789",
+      id: "3",
       type: "sponsors",
       name: "World Marathon Majors",
       description: "sample description",
       link_url: "http://www.example.com/foobar",
-      image_url: "https://placekitten.com/400/400",
+      image_url: "http://placehold.it/350x150",
     }
   ]
 });

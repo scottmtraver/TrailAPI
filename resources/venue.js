@@ -18,31 +18,31 @@ jsonApi.define({
   },
     examples: [
     {
-      id: "venue-123",
+      id: "1",
       type: "venues",
       name: "Big Venue",
       description: "sample text",
       directions_url: "http://www.example.com/foobar",
       link_url: "http://www.example.com/foobar",
-      image_url: "https://placekitten.com/400/400"
+      image_url: "http://placehold.it/350x150"
     },
     {
-      id: "venue-456",
+      id: "2",
       type: "venues",
       name: "Medium Venue",
       description: "sample text",
       directions_url: "http://www.example.com/foobar",
       link_url: "http://www.example.com/foobar",
-      image_url: "https://placekitten.com/400/400",
+      image_url: "http://placehold.it/350x150",
     },
     {
-      id: "venue-789",
+      id: "3",
       type: "venues",
       name: "Tiny Track",
       description: "sample text",
       directions_url: "http://www.example.com/foobar",
       link_url: "http://www.example.com/foobar",
-      image_url: "https://placekitten.com/400/400",
+      image_url: "http://placehold.it/350x150",
     }
   ]
 });
