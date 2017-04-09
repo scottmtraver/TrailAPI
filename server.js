@@ -93,7 +93,7 @@ app.get('/sign_upload', function(req, res) {
   res.json( {
     timestamp: timestamp,
     signature: sign,
-    api_key: config.get('cloudinary.apiKey');
+    api_key: config.get('cloudinary.apiKey')
   });
 });
 

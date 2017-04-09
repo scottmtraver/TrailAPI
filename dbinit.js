@@ -16,3 +16,8 @@ var venueHandler = require("./handlers/venueHandler.js");
 venueHandler.populate();
 var raceHandler = require("./handlers/raceHandler.js");
 raceHandler.populate();
+
+var pageHandler = require("./handlers/pageHandler.js");
+pageHandler.populate();
+var cardHandler = require("./handlers/cardHandler.js");
+cardHandler.populate();

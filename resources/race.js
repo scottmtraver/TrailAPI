@@ -17,7 +17,8 @@ jsonApi.define({
     course_url: jsonApi.Joi.string().uri(),
     course_description: jsonApi.Joi.string(),
 
-    venue: jsonApi.Joi.one('venues')
+    venue: jsonApi.Joi.one('venues'),
+    sponsor: jsonApi.Joi.one('sponsors')
   },
   examples: [
     {
@@ -35,7 +36,8 @@ jsonApi.define({
       course_url: "http://www.example.com/image",
       course_description: "Up and down those hills",
 
-      venue: { type: 'venues', id: '1' }
+      venue: { type: 'venues', id: '1' },
+      sponsor: { type: 'sponsors', id: '1' }
     }
   ]
 });
