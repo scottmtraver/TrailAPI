@@ -6,7 +6,7 @@ jsonApi.define({
   handlers: sponsorHandler,
   attributes: {
     name: jsonApi.Joi.string(),
-    description: jsonApi.Joi.string(),
+    description: jsonApi.Joi.string().allow(null).allow(""),
     link_url: jsonApi.Joi.string().uri(),
     image_url: jsonApi.Joi.string().uri()
   },

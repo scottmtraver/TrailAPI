@@ -6,19 +6,19 @@ jsonApi.define({
   handlers: raceHandler,
   attributes: {
     name: jsonApi.Joi.string(),
-    description: jsonApi.Joi.string(),
+    description: jsonApi.Joi.string().allow(null).allow(""),
     date: jsonApi.Joi.string(),
     registration_time: jsonApi.Joi.string(),
     start_time: jsonApi.Joi.string(),
     cost: jsonApi.Joi.string(),
     distance: jsonApi.Joi.string(),
-    image_url: jsonApi.Joi.string().uri(),
-    results_url: jsonApi.Joi.string().uri(),
-    course_url: jsonApi.Joi.string().uri(),
-    course_description: jsonApi.Joi.string(),
+    image_url: jsonApi.Joi.string().uri().allow(null).allow(""),// this is the course image
+    results_url: jsonApi.Joi.string().uri().allow(null).allow(""),
+    course_url: jsonApi.Joi.string().uri().allow(null).allow(""),
+    course_description: jsonApi.Joi.string().allow(null).allow(""),
 
     venue: jsonApi.Joi.one('venues'),
-    sponsor: jsonApi.Joi.one('sponsors')
+    sponsor: jsonApi.Joi.one('sponsors').allow(null)
   },
   examples: [
     {

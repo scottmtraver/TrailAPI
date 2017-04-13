@@ -6,8 +6,8 @@ jsonApi.define({
   handlers: venueHandler,
   attributes: {
     name: jsonApi.Joi.string(),
-    description: jsonApi.Joi.string(),
-    directions_url: jsonApi.Joi.string().uri(),
+    description: jsonApi.Joi.string().allow(null).allow(""),
+    directions_url: jsonApi.Joi.string().uri().allow(null).allow(""),
     link_url: jsonApi.Joi.string().uri(),
     image_url: jsonApi.Joi.string().uri(),
 

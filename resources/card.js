@@ -5,8 +5,8 @@ jsonApi.define({
   resource: "cards",
   handlers: cardHandler,
   attributes: {
-    title: jsonApi.Joi.string(),
-    content: jsonApi.Joi.string(),
+    title: jsonApi.Joi.string().allow(null).allow(""),
+    content: jsonApi.Joi.string().allow(null).allow(""),
     image_url: jsonApi.Joi.string().uri(),
     is_active: jsonApi.Joi.boolean()
   },

@@ -7,8 +7,8 @@ jsonApi.define({
   attributes: {
     title: jsonApi.Joi.string(),
     content: jsonApi.Joi.string(),
-    image_url: jsonApi.Joi.string().uri(),
-    video_url: jsonApi.Joi.string().uri().allow("")
+    image_url: jsonApi.Joi.string().uri().allow(null).allow(""),
+    video_url: jsonApi.Joi.string().uri().allow(null).allow("")
   },
     examples: [
     {
