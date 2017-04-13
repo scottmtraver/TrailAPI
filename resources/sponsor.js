@@ -1,4 +1,4 @@
-var sponsorHandler = require("../handlers/sponsorHandler.js");
+var sponsorHandler = require("../handlers/databaseHandler.js").createHandler();
 var jsonApi = require("jsonapi-server");
 
 jsonApi.define({

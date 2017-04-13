@@ -1,4 +1,4 @@
-var cardHandler = require("../handlers/cardHandler.js");
+var cardHandler = require("../handlers/databaseHandler.js").createHandler();
 var jsonApi = require("jsonapi-server");
 
 jsonApi.define({

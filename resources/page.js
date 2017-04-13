@@ -1,4 +1,4 @@
-var pageHandler = require("../handlers/pageHandler.js");
+var pageHandler = require("../handlers/databaseHandler.js").createHandler();
 var jsonApi = require("jsonapi-server");
 
 jsonApi.define({

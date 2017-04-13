@@ -1,4 +1,4 @@
-var raceHandler = require("../handlers/raceHandler.js");
+var raceHandler = require("../handlers/databaseHandler.js").createHandler();
 var jsonApi = require("jsonapi-server");
 
 jsonApi.define({

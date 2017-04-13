@@ -1,4 +1,4 @@
-var venueHandler = require("../handlers/venueHandler.js");
+var venueHandler = require("../handlers/databaseHandler.js").createHandler();
 var jsonApi = require("jsonapi-server");
 
 jsonApi.define({
