@@ -56,7 +56,7 @@ app.post('/token', function(req, res) {
 });
 //authentication middleware
 app.use(function(req, res, next) {
-  var token = req.headers['authorization'];
+  var token = (req.headers['authorization'] || '').split(' ')[1];
   jwt.verify(token, appSecret, function(err, decoded) {
     if (err) {
       return res.status(401).send({ 
