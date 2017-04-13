@@ -35,35 +35,13 @@ app.use(bodyParser.json());
 
 //auth token route
 app.post('/token', function(req, res) {
-  if (req.body.username == 'login' && req.body.password == 'ok') {
-    res.send({ access_token: "some bs" });
-  } else {
-    res.status(400).send({ error: "invalid_grant" });
-  }
-});
-//authentication middleware
-app.use(function(req, res, next) {
-  if (req.headers['authorization'] !== "Bearer some bs") {
-    return res.status(401).send({ 
-        success: false, 
-        message: 'No token provided.' 
-    });
-  }
-  next();
-});
-
-/*
-app.post('/authenticate', function(req, res) {
-
-  // find the user
-  User.findOne({ where: { username: req.body.username } }).then(function (user) {
+    User.findOne({ where: { username: req.body.username } }).then(function (user) {
     if (!user) {
-      res.json({ success: false, message: 'Authentication failed. User not found.' });
+      res.status(400).send({ error: "invalid_grant" });
     } else if (user) {
-
       // check if password matches
       if (user.get('password') != req.body.password) {
-        res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+        res.status(400).send({ error: "invalid_grant" });
       } else {
 
         // if user is found and password is right
@@ -71,17 +49,25 @@ app.post('/authenticate', function(req, res) {
           expiresIn: 1440
         });
 
-        // return the information including token as JSON
-        res.json({
-          success: true,
-          message: 'Enjoy your token!',
-          token: token
-        });
+        res.send({ access_token: token, token_type: 'bearer' });
       }   
     }
   });
 });
-*/
+//authentication middleware
+app.use(function(req, res, next) {
+  var token = req.headers['authorization'];
+  jwt.verify(token, appSecret, function(err, decoded) {
+    if (err) {
+      return res.status(401).send({ 
+          success: false, 
+          message: err 
+      });
+    } else {
+      next();
+    }
+  });
+});
 
 //cloudinary!
 app.get('/sign_upload', function(req, res) {
