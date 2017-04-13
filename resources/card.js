@@ -37,3 +37,7 @@ jsonApi.define({
     }
   ]
 });
+
+module.exports = {
+  handler: cardHandler
+}

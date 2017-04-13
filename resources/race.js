@@ -41,3 +41,7 @@ jsonApi.define({
     }
   ]
 });
+
+module.exports = {
+  handler: raceHandler
+}

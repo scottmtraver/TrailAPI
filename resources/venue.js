@@ -46,3 +46,7 @@ jsonApi.define({
     }
   ]
 });
+
+module.exports = {
+  handler: venueHandler
+}
