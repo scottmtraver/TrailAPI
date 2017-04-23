@@ -11,6 +11,7 @@
   "author": "Scott Traver",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "body-parser": "^1.15.2",
     "config": "^1.21.0",
     "fs": "0.0.2",

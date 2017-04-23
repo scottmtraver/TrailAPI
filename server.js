@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var Sequelize = require('sequelize');
 var config = require('config');
 var sha1 = require('sha1');
+var bcrypt = require('bcrypt');
 
 jsonApi.setConfig({
   protocol: "http",
@@ -25,8 +26,7 @@ var sequelize = new Sequelize(connection);
 var User = sequelize.define('user', {
   username: Sequelize.STRING,
   password: Sequelize.TEXT
-})
-
+});
 
 var app = jsonApi.getExpressServer();//get express instance
 //configure body parsers
@@ -37,13 +37,12 @@ app.use(bodyParser.json());
 app.post('/token', function(req, res) {
     User.findOne({ where: { username: req.body.username } }).then(function (user) {
     if (!user) {
-      res.status(400).send({ error: "invalid_grant" });
+      res.status(400).send({ error: "Username or password is invalid" });
     } else if (user) {
       // check if password matches
-      if (user.get('password') != req.body.password) {
-        res.status(400).send({ error: "invalid_grant" });
+      if (!bcrypt.compareSync(req.body.password, user.get('password'))) {
+        res.status(400).send({ error: "Username or password is invalid" });
       } else {
-
         // if user is found and password is right
         var token = jwt.sign(user.dataValues, appSecret, {
           expiresIn: 1440
@@ -54,6 +53,20 @@ app.post('/token', function(req, res) {
     }
   });
 });
+
+//cloudinary!
+app.get('/sign_upload', function(req, res) {
+  //needs authentication
+  var timestamp = req.query.timestamp;
+  var sign = sha1('timestamp=' + timestamp + config.get('cloudinary.secret'));
+
+  res.json( {
+    timestamp: timestamp,
+    signature: sign,
+    api_key: config.get('cloudinary.apiKey')
+  });
+});
+
 //authentication middleware
 app.use(function(req, res, next) {
   var token = (req.headers['authorization'] || '').split(' ')[1];
@@ -68,21 +81,6 @@ app.use(function(req, res, next) {
     }
   });
 });
-
-//cloudinary!
-app.get('/sign_upload', function(req, res) {
-  //needs authentication
-  var timestamp = req.query.timestamp;
-  var sign = sha1('timestamp=' + timestamp + config.get('cloudinary.secret'));
-
-  //TODO MOVE TO CONFIG!!! DO NOT CHECK IN!!!!
-  res.json( {
-    timestamp: timestamp,
-    signature: sign,
-    api_key: config.get('cloudinary.apiKey')
-  });
-});
-
 
 // Load all the resources
 fs.readdirSync(path.join(__dirname, "/resources")).filter(function(filename) {
