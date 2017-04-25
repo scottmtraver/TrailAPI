@@ -69,6 +69,10 @@ app.get('/sign_upload', function(req, res) {
 
 //authentication middleware
 app.use(function(req, res, next) {
+  if (req.method === 'GET') {
+    next();
+    return;
+  }
   var token = (req.headers['authorization'] || '').split(' ')[1];
   jwt.verify(token, appSecret, function(err, decoded) {
     if (err) {
