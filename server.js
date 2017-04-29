@@ -1,25 +1,28 @@
+// load environment variables process.env.NAME
+require('dotenv').load();
 var jsonApi = require("jsonapi-server");
 var fs = require("fs");
 var path = require("path");
 var jwt = require('jsonwebtoken');
 var bodyParser = require('body-parser');
 var Sequelize = require('sequelize');
-var config = require('config');
 var sha1 = require('sha1');
 var bcrypt = require('bcrypt');
 
 jsonApi.setConfig({
   protocol: "http",
   hostname: "localhost",
-  port: 3001,
+  port: process.env.APP_PORT,
   base: "api",
   meta: {
     description: "This block shows up in the root node of every payload"
   }
 });
 
-var appSecret = config.get('app.secret');
-var connection = config.get('database.connectionString');
+var appSecret = process.env.APP_SECRET;
+var connection = 'postgres://' + process.env.PG_USER + ':' +
+  process.env.PG_PASS + '@' + process.env.PG_HOST + ':' + process.env.PG_PORT +
+  '/' + process.env.PG_DBNAME;
 
 var sequelize = new Sequelize(connection);
 
@@ -58,12 +61,12 @@ app.post('/token', function(req, res) {
 app.get('/sign_upload', function(req, res) {
   //needs authentication
   var timestamp = req.query.timestamp;
-  var sign = sha1('timestamp=' + timestamp + config.get('cloudinary.secret'));
+  var sign = sha1('timestamp=' + timestamp + process.env.CLOUDINARY_SECRET);
 
   res.json( {
     timestamp: timestamp,
     signature: sign,
-    api_key: config.get('cloudinary.apiKey')
+    api_key: process.env.CLOUDINARY_KEY
   });
 });
 
