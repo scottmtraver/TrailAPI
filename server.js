@@ -36,6 +36,22 @@ var app = jsonApi.getExpressServer();//get express instance
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,PATCH');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+      
+    // intercept OPTIONS method
+    if ('OPTIONS' == req.method) {
+      res.send(200);
+    }
+    else {
+      next();
+    }
+};
+app.use(allowCrossDomain);
+
+
 //auth token route
 app.post('/token', function(req, res) {
     User.findOne({ where: { username: req.body.username } }).then(function (user) {
