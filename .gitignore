@@ -43,3 +43,4 @@ jspm_packages
 # Environment Variable file
 .env
 docker-env
+backup
