@@ -14,6 +14,7 @@
     "bcrypt": "^1.0.2",
     "body-parser": "^1.15.2",
     "dotenv": "^4.0.0",
+    "file-base64": "^1.0.0",
     "fs": "0.0.2",
     "jsonapi-server": "^2.1.0",
     "jsonapi-store-relationaldb": "^1.2.8",

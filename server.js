@@ -105,6 +105,32 @@ app.use(function(req, res, next) {
   });
 });
 
+//file upload
+app.post('/api/results', function(req, res) {
+
+  var base64 = require('file-base64');
+  var content = '';
+  req.on('data', function(buf) { content += buf.toString(); });
+  req.on('end', function() {
+    content = content.replace(/"/g,"");
+    var test = content.substr(0, 22);
+    //check for text/html header
+    if(test === 'data:text/html;base64,') {
+      var trim = content.slice(22);
+      base64.decode(trim, 'uploads/test.html', function(err, output) {
+        res.json( {
+          url: 'url',
+        });
+      });
+    } else {
+      res.json( {
+        error: 'Invalid Upload',
+        url: '',
+      });
+    }
+  });
+});
+
 // Load all the resources
 fs.readdirSync(path.join(__dirname, "/resources")).filter(function(filename) {
   return /^[a-z].*\.js$/.test(filename);
