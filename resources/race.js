@@ -13,7 +13,7 @@ jsonApi.define({
     cost: jsonApi.Joi.string(),
     distance: jsonApi.Joi.string(),
     image_url: jsonApi.Joi.string().uri().allow(null).allow(""),// this is the course image
-    results_url: jsonApi.Joi.string().uri().allow(null).allow(""),
+    results_url: jsonApi.Joi.string().allow(null).allow(""),
     course_url: jsonApi.Joi.string().uri().allow(null).allow(""),
     course_description: jsonApi.Joi.string().allow(null).allow(""),
 

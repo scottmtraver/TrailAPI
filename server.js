@@ -117,9 +117,10 @@ app.post('/api/results', function(req, res) {
     //check for text/html header
     if(test === 'data:text/html;base64,') {
       var trim = content.slice(22);
-      base64.decode(trim, 'uploads/test.html', function(err, output) {
+      var filename = 'uploads/results_' + new Date().getTime() + '.html';
+      base64.decode(trim, filename, function(err, output) {
         res.json( {
-          url: 'url',
+          url: '/' + filename,
         });
       });
     } else {
