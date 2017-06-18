@@ -88,7 +88,10 @@ app.get('/sign_upload', function(req, res) {
 
 //authentication middleware
 app.use(function(req, res, next) {
-  if (req.method === 'GET') {
+  // require authentication for all admin actions
+  // var isAdmin = req.headers.referer ? req.headers.referer.indexOf('4200') >= 0 : false;
+  var isAdmin = req.headers.referer ? req.headers.referer.indexOf('admin') >= 0 : false;
+  if (req.method === 'GET' && !(isAdmin)) {
     next();
     return;
   }
