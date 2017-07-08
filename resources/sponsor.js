@@ -8,7 +8,8 @@ jsonApi.define({
     name: jsonApi.Joi.string(),
     description: jsonApi.Joi.string().allow(null).allow(""),
     link_url: jsonApi.Joi.string().uri(),
-    image_url: jsonApi.Joi.string().uri()
+    image_url: jsonApi.Joi.string().uri(),
+    is_active: jsonApi.Joi.boolean()
   },
     examples: [
     {
@@ -18,6 +19,7 @@ jsonApi.define({
       description: "sample description",
       link_url: "http://www.example.com/foobar",
       image_url: "http://placehold.it/350x150",
+      is_active: true
     },
     {
       id: "2",
@@ -26,6 +28,7 @@ jsonApi.define({
       description: "sample description",
       link_url: "http://www.example.com/foobar",
       image_url: "http://placehold.it/350x150",
+      is_active: true
     },
     {
       id: "3",
@@ -34,6 +37,7 @@ jsonApi.define({
       description: "sample description",
       link_url: "http://www.example.com/foobar",
       image_url: "http://placehold.it/350x150",
+      is_active: true
     }
   ]
 });
