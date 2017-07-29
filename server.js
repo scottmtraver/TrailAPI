@@ -33,7 +33,7 @@ var User = sequelize.define('user', {
 
 var app = jsonApi.getExpressServer();//get express instance
 //configure body parsers
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false, limit: "50mb" }));
 app.use(bodyParser.json());
 
 var allowCrossDomain = function(req, res, next) {
