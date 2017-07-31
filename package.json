@@ -19,6 +19,7 @@
     "jsonapi-server": "^2.1.0",
     "jsonapi-store-relationaldb": "^1.2.8",
     "jsonwebtoken": "^7.1.9",
+    "lodash": "^4.17.4",
     "path": "^0.12.7",
     "pg": "^6.1.0",
     "pg-hstore": "^2.3.2",

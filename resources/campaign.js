@@ -7,7 +7,12 @@ jsonApi.define({
   attributes: {
     name: jsonApi.Joi.string(),
     video_url: jsonApi.Joi.string(),
-    is_active: jsonApi.Joi.boolean()
+    is_active: jsonApi.Joi.boolean(),
+
+    centries: jsonApi.Joi.belongsToMany({
+      resource: 'centry',
+      as: 'campaign'
+    }),
   },
     examples: [
     {

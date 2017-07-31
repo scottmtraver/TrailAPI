@@ -8,6 +8,11 @@ var bodyParser = require('body-parser');
 var Sequelize = require('sequelize');
 var sha1 = require('sha1');
 var bcrypt = require('bcrypt');
+var _ = require('lodash');
+
+const excludePaths = [
+  '/api/centry'
+];
 
 jsonApi.setConfig({
   protocol: "http",
@@ -51,7 +56,6 @@ var allowCrossDomain = function(req, res, next) {
 };
 app.use(allowCrossDomain);
 
-
 //auth token route
 app.post('/token', function(req, res) {
     User.findOne({ where: { username: req.body.username } }).then(function (user) {
@@ -92,6 +96,11 @@ app.use(function(req, res, next) {
   // var isAdmin = req.headers.referer ? req.headers.referer.indexOf('4200') >= 0 : false;
   var isAdmin = req.headers.referer ? req.headers.referer.indexOf('admin') >= 0 : false;
   if (req.method === 'GET' && !(isAdmin)) {
+    next();
+    return;
+  }
+  // exclude certain routes
+  if (_.includes(excludePaths, req.path)) {
     next();
     return;
   }

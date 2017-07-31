@@ -5,3 +5,6 @@ DROP TABLE public."venues";
 DROP TABLE public."sponsors";
 DROP TABLE public."cards";
 DROP TABLE public."pages";
+DROP TABLE public."centry-campaign";
+DROP TABLE public."centry";
+DROP TABLE public."campaign";
