@@ -64,7 +64,7 @@ app.post('/token', function(req, res) {
       } else {
         // if user is found and password is right
         var token = jwt.sign(user.dataValues, appSecret, {
-          expiresIn: 1440
+          expiresIn: (Math.floor(Date.now() / 1000) + (60 * 60) * 5)
         });
 
         res.send({ access_token: token, token_type: 'bearer' });
